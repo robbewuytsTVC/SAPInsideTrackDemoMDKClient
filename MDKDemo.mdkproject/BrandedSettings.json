@@ -1,0 +1,68 @@
+{
+  "ApplicationDisplayName": "nfcDEMO",
+  "SkipEula": false,
+  "ObfuscateEmail": false,
+ "ConnectionSettings": {
+                "EnableOverrides": false,
+                "AppId": "nfcDEMO",
+                "ClientId": "854a3ed0-9714-4b4d-87a0-51f35ff4f91e",
+                "ServerUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com",
+                "AuthorizationEndpointUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com/oauth2/api/v1/authorize",
+                "RedirectUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com",
+                "TokenUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com/oauth2/api/v1/token",
+                "MultiUserSettings": {
+                               "MultiUserEnabled": false
+                }
+  },
+  "AllowedDomains": [
+    "<Enter any domain name that be allowed for ConnectionSettings>"
+  ],
+  "DebugSettings": {
+    "DebugODataProvider": false,
+    "TracingEnabled": false,
+    "Categories": [
+      "mdk.trace.action",
+      "mdk.trace.api",
+      "mdk.trace.app",
+      "mdk.trace.binding",
+      "mdk.trace.branding",
+      "mdk.trace.core",
+      "mdk.trace.i18n",
+      "mdk.trace.lcms",
+      "mdk.trace.logging",
+      "mdk.trace.odata",
+      "mdk.trace.onboarding",
+      "mdk.trace.profiling",
+      "mdk.trace.push",
+      "mdk.trace.restservice",
+      "mdk.trace.settings",
+      "mdk.trace.targetpath",
+      "mdk.trace.ui"
+    ]
+  },
+  "LogSettings": {
+    "FileName": "ClientLog.txt",
+    "MaxFileSizeInMegaBytes": 1,
+    "LogLevel": "<Enter your LogLevel - Error | Warn | Info | Debug>"
+  },
+  "Demo": {
+    "EnableOverrides": false,
+    "DemoAppLanguage": "<Specify language code (i.e. en) if the demo db can support sap-language parameter>",
+    "ConnectionSettings": {
+      "AppId": "<Enter your SAP Mobile Services app ID here>",
+      "ClientId": "<Enter your SAP Mobile Services Client ID here>",
+      "ServerUrl": "<Enter your SAP Mobile Services Endpoint here>",
+      "AuthorizationEndpointUrl": "<Enter your SAP Mobile Services Authorization Endpoint here>",
+      "RedirectUrl": "<Enter your SAP Mobile Services Authorization Redirect URL here>",
+      "TokenUrl": "<Enter your SAP Mobile Services Authorization Token Url here>"
+    }
+  },
+  "DetailLabelViewText": "<Enter Detail Label View text here>",
+  "DefaultAppLanguage" : "en",
+  "SecureDatabaseEncryptionKey": true,
+  "PasscodeTimeout": 120,
+  "SigninButtonText": "<Enter Sign in button text here>",
+  "OnboardingCustomizations": {
+    "_comment" : "<See Branding documentation or OnboardingCustomizations.sample on how to override & customize Onboarding UI strings>"
+  }
+}

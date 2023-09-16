@@ -1,0 +1,10 @@
+{
+  "AppDisplayName": "nfcDEMO",
+  "AppName": "nfcDEMO",
+  "AppVersion": "1.0.0",
+  "BundleID": "nfcDEMO",
+  "Externals": [],
+  "NSPlugins": [],
+  "NPMPlugins": [],
+  "UrlScheme": "mdkclient"
+}
