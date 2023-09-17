@@ -53,7 +53,7 @@ struct ContentView: View {
                         .font(.custom("Early GameBoy", size: 20))
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color.black)
-                        .offset(y: -250)
+                        .offset(y: -230)
                     
                     //Ball
                     Rectangle()
@@ -195,7 +195,7 @@ struct ContentView: View {
             dy = -dy
             score += 1
             
-            // Level up each 3 points
+            // Level up each 3 points, speed + 10%
             if score % 3 == 0 {
                 level += 1
                 dx *= 1.1
