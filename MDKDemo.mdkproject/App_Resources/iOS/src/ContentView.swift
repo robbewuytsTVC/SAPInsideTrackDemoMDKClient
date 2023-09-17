@@ -53,7 +53,7 @@ struct ContentView: View {
                         .font(.custom("Early GameBoy", size: 20))
                         .multilineTextAlignment(.center)
                         .foregroundColor(Color.black)
-                        .offset(y: -230)
+                        .offset(y: -270)
                     
                     //Ball
                     Rectangle()
@@ -72,13 +72,13 @@ struct ContentView: View {
                     //Score
                     Text("Score: \(score)")
                         .foregroundColor(.black)
-                        .font(.custom("Early GameBoy", size: 18))
+                        .font(.custom("Early GameBoy", size: 16))
                         .position(x: 90, y: 170)
                     
                     //Level
                     Text("Level: \(level)")
                         .foregroundColor(.black)
-                        .font(.custom("Early GameBoy", size: 18))
+                        .font(.custom("Early GameBoy", size: 16))
                         .position(x: 90, y: 140)
                     
                     
