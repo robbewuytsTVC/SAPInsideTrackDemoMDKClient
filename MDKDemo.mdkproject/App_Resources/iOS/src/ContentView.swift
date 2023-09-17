@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         
             ZStack {
-                //Frame
+                // Frame
                 Rectangle()
                     .fill(Color(red: 139 / 255, green: 172 / 255, blue: 15 / 255))
                     .frame(maxWidth: 350, maxHeight: 650)
@@ -88,7 +88,7 @@ struct ContentView: View {
                             .font(.custom("Early GameBoy", size: 30))
                             .foregroundColor(Color.black)
                         
-                        //TVC text
+                        //TVC advertising :-)
                         Text("©2023 TheValueChain")
                             .foregroundColor(.black)
                             .font(.custom("Early GameBoy", size: 15))
@@ -121,34 +121,38 @@ struct ContentView: View {
                 }
             }
             .gesture(
+                //Movement of paddle
                 DragGesture()
                     .onChanged { value in
                         paddlePosition = value.location.x
                     }
             )
             .onAppear {
-                // Simulate loading for 3 seconds
+                // Simulate loading for 3 seconds and start the game
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self.showLoadingScreen = false
                     startGame()
                 }
             }
             .frame(width: 350, height: 650)
-        
     }
     
+    //Start game
     func startGame() {
+        // Update game each 'tick' of the timer
         cancellable = timer.autoconnect().sink { _ in
             update()
         }
     }
     
+    // Change opacity to 0, and keep repeating in order to have 'blinking' effect
     func startBlinking() {
         withAnimation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
             opacity = 0.0
         }
     }
     
+    // Restart game, reset parameters
     func restartGame() {
         ballPosition = CGPoint(x: 50, y: 50)
         paddlePosition = 300
@@ -163,29 +167,35 @@ struct ContentView: View {
         startGame()
     }
     
+    // Update parameters, again and again... until game over
     func update() {
         guard !gameOver else { return }
         ballPosition.x += dx
         ballPosition.y += dy
         
+        // Bounce on sides
         if ballPosition.x <= 15	 || ballPosition.x >= 335 { // Frame is 350 wide, ball is 25 wide
             dx = -dx
         }
         
+        // Bounce on roof
         if ballPosition.y <= 15 { // Top boundary
             dy = -dy
         }
         
-        if ballPosition.y > 650 { // Game Over, frame is 650 high
+        // Game Over, frame is 650 high
+        if ballPosition.y > 650 {
             gameOver = true
             cancellable?.cancel()
             return
         }
         
+        // Ball bounces on paddle, add point
         if abs(ballPosition.y - 625) <= 15 && abs(ballPosition.x - paddlePosition) <= 50 {
             dy = -dy
             score += 1
             
+            // Level up each 3 points
             if score % 3 == 0 {
                 level += 1
                 dx *= 1.1
