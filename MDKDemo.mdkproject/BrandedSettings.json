@@ -43,7 +43,7 @@
   "LogSettings": {
     "FileName": "ClientLog.txt",
     "MaxFileSizeInMegaBytes": 1,
-    "LogLevel": "<Enter your LogLevel - Error | Warn | Info | Debug>"
+    "LogLevel": "Warn"
   },
   "Demo": {
     "EnableOverrides": false,
