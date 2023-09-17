@@ -3,7 +3,7 @@ import Combine
 
 struct ContentView: View {
     @State private var ballPosition: CGPoint = CGPoint(x: 50, y: 50)
-    @State private var paddlePosition: CGFloat = 200
+    @State private var paddlePosition: CGFloat = 300
     @State private var dx: CGFloat = 5.0
     @State private var dy: CGFloat = 5.0
     @State private var score: Int = 0
@@ -15,57 +15,72 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            //Frame
             Rectangle()
                 .fill(Color(red: 139 / 255, green: 172 / 255, blue: 15 / 255))
-               
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            
-            Text("SAP Inside Track goes 8bit")
-                          .font(.custom("Early GameBoy", size: 22))
-                          .multilineTextAlignment(.center)
-                          .foregroundColor(Color.black)
-                          .offset(y: -300)
-
-            Rectangle()
-                .fill(Color.black)
-                .frame(width: 30, height: 30)
-                .position(ballPosition)
-                .overlay( 
+                .frame(maxWidth: 350, maxHeight: 650)
+                .overlay(
                     RoundedRectangle(cornerRadius: 10)
                         .stroke(.black, lineWidth: 5)
                 )
             
+            //Title
+            Text("SAP Inside Track goes 8bit")
+                .font(.custom("Early GameBoy", size: 20))
+                .multilineTextAlignment(.center)
+                .foregroundColor(Color.black)
+                .offset(y: -250)
             
+            //Ball
+            Rectangle()
+                .fill(Color.black)
+                .frame(width: 25, height: 25)
+                .position(ballPosition)
+                .opacity(gameOver ? 0 : 1)
+            
+            //Paddle
             Rectangle()
                 .fill(Color.black)
                 .frame(width: 100, height: 10)
-                .position(x: paddlePosition, y: 750)
+                .position(x: paddlePosition, y: 625)
+                .opacity(gameOver ? 0 : 1)
             
+            //Score
             Text("Score: \(score)")
                 .foregroundColor(.black)
-                .font(.custom("Early GameBoy", size: 20))
+                .font(.custom("Early GameBoy", size: 18))
                 .position(x: 90, y: 170)
-
+            
+            //Level
+            Text("Level: \(level)")
+                .foregroundColor(.black)
+                .font(.custom("Early GameBoy", size: 18))
+                .position(x: 90, y: 140)
+            
             
             if gameOver {
+                //Game over text
                 Text("GAME OVER!")
-                    .font(.custom("Early GameBoy", size: 35))
+                    .font(.custom("Early GameBoy", size: 30))
                     .foregroundColor(Color.black)
                 
+                //TVC text
                 Text("©2023 TheValueChain")
                     .foregroundColor(.black)
-                    .font(.custom("Early GameBoy", size: 16))
-                    .position(x: 200, y: 700)
-                
-                Text("Press start to play again!")
                     .font(.custom("Early GameBoy", size: 15))
+                    .position(x: 170, y: 610)
+                
+                //Start text
+                Text("Press start to play again!")
+                    .font(.custom("Early GameBoy", size: 11))
                     .foregroundColor(Color.black)
-                    .position(x: 200, y: 500)
+                    .position(x: 180, y: 380)
                     .opacity(opacity)
                     .onAppear {
                         startBlinking()
                     }
                 
+                //Start button
                 Button(action: {
                     restartGame()
                 }) {
@@ -77,14 +92,7 @@ struct ContentView: View {
                 }
                 .background(Color.white)
                 .cornerRadius(5)
-                .position(x: 200, y: 600)
-                .overlay(
-                    RoundedRectangle(cornerRadius: 5)
-                        .stroke(Color.black, lineWidth: 2)
-                )
-               
-                                
-                
+                .position(x: 170, y: 450)
             }
         }
         .gesture(
@@ -96,6 +104,7 @@ struct ContentView: View {
         .onAppear {
             startGame()
         }
+        .frame(width: 350, height: 650)
     }
     
     func startGame() {
@@ -105,53 +114,45 @@ struct ContentView: View {
     }
     
     func startBlinking() {
-            withAnimation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
-                opacity = 0.0
-            }
-            
-//            // Stop blinking after 3 seconds
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-//                self.opacity = 1.0
-//            }
+        withAnimation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
+            opacity = 0.0
         }
+    }
     
     func restartGame() {
-            // Reset game state variables
-            ballPosition = CGPoint(x: 50, y: 50)
-            paddlePosition = 200
-            dx = 5.0
-            dy = 5.0
-            score = 0
-            level = 1
-            gameOver = false
+        ballPosition = CGPoint(x: 50, y: 50)
+        paddlePosition = 300
+        dx = 5.0
+        dy = 5.0
+        score = 0
+        level = 1
+        gameOver = false
         opacity = 1
-            
-            // Restart the timer
-            cancellable?.cancel()
-            startGame()
-        }
+        
+        cancellable?.cancel()
+        startGame()
+    }
     
     func update() {
         guard !gameOver else { return }
         ballPosition.x += dx
         ballPosition.y += dy
         
-        if ballPosition.x < 0 || ballPosition.x > 400 {
+        if ballPosition.x <= 15     || ballPosition.x >= 335 { // Frame is 350 wide, ball is 25 wide
             dx = -dx
         }
         
-        if ballPosition.y < 0 {
+        if ballPosition.y <= 15 { // Top boundary
             dy = -dy
         }
         
-        if ballPosition.y > 800 {
-            // Game Over
+        if ballPosition.y > 650 { // Game Over, frame is 650 high
             gameOver = true
             cancellable?.cancel()
             return
         }
         
-        if abs(ballPosition.y - 750) <= 25 && abs(ballPosition.x - paddlePosition) <= 50 {
+        if abs(ballPosition.y - 625) <= 15 && abs(ballPosition.x - paddlePosition) <= 50 {
             dy = -dy
             score += 1
             

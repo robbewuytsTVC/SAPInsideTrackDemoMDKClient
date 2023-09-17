@@ -1,8 +1,8 @@
 {
-  "AppDisplayName": "nfcDEMO",
-  "AppName": "nfcDEMO",
+  "AppDisplayName": "InsideTrackDEMO",
+  "AppName": "InsideTrackDEMO",
   "AppVersion": "1.0.0",
-  "BundleID": "nfcDEMO",
+  "BundleID": "InsideTrackDEMO",
   "Externals": [],
   "NSPlugins": [],
   "NPMPlugins": [],

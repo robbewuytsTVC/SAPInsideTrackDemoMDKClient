@@ -1,18 +1,18 @@
 {
-  "ApplicationDisplayName": "nfcDEMO",
+  "ApplicationDisplayName": "InsideTrackDEMO",
   "SkipEula": false,
   "ObfuscateEmail": false,
- "ConnectionSettings": {
-                "EnableOverrides": false,
-                "AppId": "nfcDEMO",
-                "ClientId": "854a3ed0-9714-4b4d-87a0-51f35ff4f91e",
-                "ServerUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com",
-                "AuthorizationEndpointUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com/oauth2/api/v1/authorize",
-                "RedirectUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com",
-                "TokenUrl": "https://eliagroup-111-dev-111-pm-nfcdemo.cfapps.eu10.hana.ondemand.com/oauth2/api/v1/token",
-                "MultiUserSettings": {
-                               "MultiUserEnabled": false
-                }
+  "ConnectionSettings": {
+    "EnableOverrides": false,
+    "AppId": "demoSapInsideTrack2023",
+    "ClientId": "2319dd78-1569-44ea-a9fb-a1b25c2cd259",
+    "ServerUrl": "https://cloudfoundry-8vzu42ix-dev-demosapinsidetrack2023.cfapps.eu10-004.hana.ondemand.com",
+    "AuthorizationEndpointUrl": "https://cloudfoundry-8vzu42ix-dev-demosapinsidetrack2023.cfapps.eu10-004.hana.ondemand.com/oauth2/api/v1/authorize",
+    "RedirectUrl": "https://cloudfoundry-8vzu42ix-dev-demosapinsidetrack2023.cfapps.eu10-004.hana.ondemand.com",
+    "TokenUrl": "https://cloudfoundry-8vzu42ix-dev-demosapinsidetrack2023.cfapps.eu10-004.hana.ondemand.com/oauth2/api/v1/token",
+    "MultiUserSettings": {
+        "MultiUserEnabled": false
+    }
   },
   "AllowedDomains": [
     "<Enter any domain name that be allowed for ConnectionSettings>"
