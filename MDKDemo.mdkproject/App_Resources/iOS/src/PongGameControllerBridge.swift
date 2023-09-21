@@ -1,6 +1,6 @@
 import SwiftUI
 
-//Expose this class to objective-c, needed for MDK framework
+//Expose this class to objective-c
 @objc(PongGameControllerBridge)
 
 //UIKit controller class
